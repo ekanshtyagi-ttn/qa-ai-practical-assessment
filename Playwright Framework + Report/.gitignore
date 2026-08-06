@@ -1,0 +1,7 @@
+node_modules/
+.env
+execution-reports/test-output/
+mochawesome-report/
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,26 @@
+Test Case ID,Requirement ID,Title,Type,Category,Priority,Preconditions,Test Steps,Expected Result,Status
+TC-MAN-S01,AC1,User registers with valid details and lands on account area,Functional,Smoke,High,User is not registered; browser on Toolshop home,"1. Open Sign In
+2. Navigate to Register
+3. Fill all mandatory fields with valid data
+4. Submit registration",Registration succeeds and user is signed in,Passed
+TC-MAN-S02,AC1,Registered user logs in successfully,Functional,Smoke,High,Valid registered user exists,"1. Open Sign In
+2. Enter valid email/password
+3. Click Login",User is authenticated and account menu is visible,Passed
+TC-MAN-R01,AC2,User adds multiple products and updates quantity in cart,Functional,Regression,High,Authenticated user on product catalog,"1. Open two different products
+2. Add each to cart
+3. Open cart and increase quantity of one item",Cart shows both products with updated quantity and subtotal,Passed
+TC-MAN-R02,AC2,Cash on Delivery checkout generates invoice after double confirm,Functional,Regression,Critical,Authenticated user with items in cart,"1. Proceed to checkout
+2. Select Cash on Delivery
+3. Press Confirm twice
+4. Open My Invoices",Invoice is created and listed with invoice number,Passed
+TC-MAN-R03,AC2,Invalid login shows error and blocks access,Negative,Regression,Medium,None,"1. Open Sign In
+2. Enter invalid credentials
+3. Submit",Error message shown; user remains on login page,Passed
+TC-MAN-R04,AC2,Product search filters catalog by keyword,Functional,Regression,Medium,Products loaded on home,"1. Enter keyword (e.g. Pliers) in search
+2. Submit search",Matching products are displayed,Passed
+TC-MAN-R05,API-AC1,API register/login returns bearer token,API,Regression,High,API base URL reachable,"1. POST /users/register with valid payload
+2. POST /users/login
+3. Verify access_token present",201 register + 200 login with bearer token,Passed
+TC-MAN-R06,API-AC2,API invoice generation with valid cart and COD payload,API,Regression,Critical,Authenticated user with cart containing products,"1. POST /carts
+2. POST /carts/{id} add product
+3. POST /invoices with COD payload and cart_id",201 response with invoice_number,Passed

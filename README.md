@@ -14,26 +14,8 @@ For AI-assisted workflow, test strategy, and project background, see **[project-
 | **Design pattern** | Page Object Model (UI) + API client layer (API) |
 | **UI SUT** | https://practicesoftwaretesting.com |
 | **API SUT** | https://api.practicesoftwaretesting.com |
-| **Browser** | Chromium (headed mode via `npm run test:headed`) |
+| **Browser** | Chromium (headed via `npm run test:headed`) |
 | **Manual test cases** | [FunctionalTestcase.csv](./FunctionalTestcase.csv) |
-| **AI workflow** | [cursor-tool.md](./cursor-tool.md) · [tool-workflow.md](./tool-workflow.md) |
-
----
-
-## Submission Deliverables
-
-| Requirement | Location |
-|-------------|----------|
-| README with project overview | This file |
-| Manual test cases | `FunctionalTestcase.csv` |
-| API test scenarios | `api-test-scenarios.md` |
-| Automation opportunities | `automation-opportunities.md` |
-| UI + API automation | `Projectstructure/tests/` |
-| Exploratory testing notes | `exploratory-testing-notes.md` |
-| Defect report / RCA | `defect-report.md` |
-| AI prompts | `ai-prompts/` |
-| AI workflow documentation | `cursor-tool.md` |
-| Execution evidence | `Projectstructure/execution-reports/` |
 
 ---
 
@@ -48,8 +30,8 @@ For AI-assisted workflow, test strategy, and project background, see **[project-
 ## Installation
 
 ```bash
-git clone <your-repo-url>
-cd qa-ai-practical-assessment/Projectstructure
+git clone https://github.com/ekanshtyagi-ttn/qa-ai-practical-assessment.git
+cd qa-ai-practical-assessment/"Playwright Framework + Report"
 
 npm install
 npx playwright install chromium
@@ -58,8 +40,7 @@ npx playwright install chromium
 ### Environment setup
 
 ```bash
-copy .env.example .env    # Windows
-# cp .env.example .env    # macOS/Linux
+copy .env.example .env
 ```
 
 | Variable | Default | Description |
@@ -73,33 +54,26 @@ copy .env.example .env    # Windows
 ## Project Structure
 
 ```
-qa-ai-practical-assessment/
-├── FunctionalTestcase.csv         # Manual test cases
-├── api-test-scenarios.md          # API scenario catalogue
-├── automation-opportunities.md    # Automation ROI analysis
-├── exploratory-testing-notes.md   # Exploratory session notes
-├── defect-report.md               # Observations + RCA
-├── project-info.md                # Part A workflow answers
-├── cursor-tool.md                 # Cursor rules & AI workflow
-├── tool-workflow.md               # Phased AI usage narrative
-├── ai-prompts/                      # Prompt history by phase
-└── Projectstructure/              # Automation framework
-    ├── api/                       # AuthApi, CartApi, ProductApi, InvoiceApi
-    ├── pages/                     # Page Object Model classes
-    ├── helpers/                   # Mocha test harness
-    ├── utils/                     # dataGenerator, uiFlows, constants
-    ├── testdata/                  # Billing JSON payloads
-    ├── tests/
-    │   ├── ui/                    # 6 UI specs (@Smoke / @Regression)
-    │   └── api/                   # 6 API specs (@Smoke / @Regression)
-    └── execution-reports/         # Mochawesome + execution summary
+Playwright Framework + Report/
+├── api/                  # AuthApi, CartApi, ProductApi, InvoiceApi
+├── pages/                # Page Object Model classes
+├── helpers/              # Mocha test harness
+├── utils/                # dataGenerator, uiFlows, constants
+├── testdata/             # Billing JSON payloads
+├── tests/
+│   ├── ui/               # 6 UI specs (@Smoke / @Regression)
+│   └── api/              # 6 API specs (@Smoke / @Regression)
+├── execution-reports/    # Mochawesome HTML/JSON + execution summary
+├── .mocharc.cjs
+├── package.json
+└── .env.example
 ```
 
 ---
 
 ## Running Tests
 
-All commands run from `Projectstructure/`:
+All commands run from `Playwright Framework + Report/`:
 
 | Command | Description |
 |---------|-------------|
@@ -108,7 +82,7 @@ All commands run from `Projectstructure/`:
 | `npm run test:api` | API tests only |
 | `npm run test:smoke` | `@Smoke` tagged tests |
 | `npm run test:regression` | `@Regression` tagged tests |
-| `npm run test:headed` | UI tests with visible browser |
+| `npm run test:headed` | Visible browser (UI) |
 | `npm run report` | Open Mochawesome HTML report |
 
 ### Run a single spec
@@ -122,7 +96,7 @@ npx mocha "tests/api/toolshop.api.spec.js" --config .mocharc.cjs
 
 ## Test Suite Summary
 
-### UI (6 cases) — `tests/ui/toolshop.ui.spec.js`
+### UI (6 cases)
 
 | ID | Title | Tag |
 |----|-------|-----|
@@ -133,7 +107,7 @@ npx mocha "tests/api/toolshop.api.spec.js" --config .mocharc.cjs
 | TC-UI-R03 | Search returns matching products | @Regression |
 | TC-UI-R04 | Profile displays registered user details | @Regression |
 
-### API (6 cases) — `tests/api/toolshop.api.spec.js`
+### API (6 cases)
 
 | ID | Title | Tag |
 |----|-------|-----|
@@ -153,13 +127,12 @@ npx mocha "tests/api/toolshop.api.spec.js" --config .mocharc.cjs
 | `utils/dataGenerator.js` | Unique emails, passwords, registration payloads per run |
 | `utils/constants.js` | `BILLING` payload (TG/Hesselbury sandbox) |
 | `testdata/billing.json` | Valid and invalid invoice payloads |
-| `.env` | Runtime URLs (optional — defaults work) |
 
-Credentials are generated uniquely per run to avoid duplicate-email and password-breach failures on the demo API.
+Credentials are generated uniquely per run to avoid duplicate-email conflicts on the demo API.
 
 ---
 
-## Reports and Execution Evidence
+## Reports and Logs
 
 | Output | Location | How to open |
 |--------|----------|-------------|
@@ -173,7 +146,11 @@ Credentials are generated uniquely per run to avoid duplicate-email and password
 
 ## Manual Test Cases
 
-Functional/manual test cases are in **[FunctionalTestcase.csv](./FunctionalTestcase.csv)** (8 cases).
+Functional/manual test cases are maintained in:
+
+```
+FunctionalTestcase.csv
+```
 
 Columns: Test Case ID, Requirement ID, Title, Type, Category, Priority, Preconditions, Test Steps, Expected Result, Status.
 
@@ -183,12 +160,11 @@ Columns: Test Case ID, Requirement ID, Title, Type, Category, Priority, Precondi
 
 | Issue | Suggestion |
 |-------|------------|
-| `No test files found` | Use `npm test` (includes glob) or `npx mocha "tests/**/*.spec.js"` |
+| Chromium not found | `npx playwright install chromium` |
 | Register 422 (password breach) | Tests use unique passwords via `dataGenerator.js` |
 | Invoice 422 (billing) | Use TG/Hesselbury payload in `constants.js` |
-| Invoice missing after checkout | Press Confirm **twice** — see `defect-report.md` |
+| Invoice missing after checkout | Press Confirm **twice** — see `project-info.md` |
 | UI flake on checkout | Run `npm run test:headed` and watch proceed buttons |
-| Chromium not installed | `npx playwright install chromium` |
 
 ---
 
@@ -200,15 +176,7 @@ ai-prompts/
 ├── test-design.md
 ├── test-design-API.md
 ├── test-data.md
-├── automation-and-debugging.md
-└── documentation-and-summary.md
+└── automation-and-debugging.md
 ```
 
 See **[cursor-tool.md](./cursor-tool.md)** for Cursor rules, model selection, and workflow summary.
-
----
-
-## Reference
-
-This submission follows the structure and completeness of the sample assessment repository:  
-[shivadev-ttn/qa-ai-practical-assessment](https://github.com/shivadev-ttn/qa-ai-practical-assessment)

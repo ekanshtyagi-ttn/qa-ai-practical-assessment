@@ -3,42 +3,36 @@
 **Candidate:** Ekansh Tyagi  
 **Primary tool:** [Cursor](https://cursor.com/) (Composer / Auto + premium model for automation)
 
-For the full phased workflow narrative, see also **[tool-workflow.md](./tool-workflow.md)**.
-
 ---
 
 ## AI Tools Used
 
-| Tool | Primary use in this project | Record |
-|------|----------------------------|--------|
-| **Cursor** | Requirements, test design, Playwright automation, debugging, documentation | `ai-prompts/` + chat history |
-| **Cursor Bugbot** | Review local changes before merge (`/review-bugbot`) | automation-and-debugging.md Entry 6 |
+| Tool | Primary use | Record |
+|------|-------------|--------|
+| **Cursor** | Requirements, test design, Playwright automation, debugging, docs | `ai-prompts/` + chat history |
+| **Cursor Bugbot** | Review local changes (`/review-bugbot`) | `automation-and-debugging.md` |
 
-Planning, implementation, and documentation were all done in Cursor across separate focused chats (one topic per session).
+Planning, implementation, and documentation were done in Cursor across separate focused chats (one topic per session).
 
 ---
 
-## Cursor — Project Rules
-
-Custom rules live in **`.cursor/rules/toolshop-qa-assessment.mdc`**:
+## Cursor — Effective Rules
 
 | Rule | Purpose |
 |------|---------|
-| Playwright + Mocha + Mochawesome layout | Consistent folder structure |
-| 5–8 cases per tier, @Smoke / @Regression | Assessment constraints |
+| Page Object Model for UI; API clients for API | Maintainability |
+| Tag tests `@Smoke`, `@Regression` | Selective execution |
+| Dynamic test data per run (unique email/password) | Avoid duplicate-user failures |
 | `data-test` locators first | Stable UI automation |
-| Unique emails via `dataGenerator` | Avoid duplicate-user failures |
 | TG/Hesselbury billing + double Confirm | Known SUT quirks |
 | Minimal dependencies | dotenv, mocha, mochawesome, cross-env only |
-| Reports under `execution-reports/mochawesome/` | Submission evidence |
+| Mochawesome reports under `execution-reports/` | Submission evidence |
 
-Workspace rules also enforced: no secrets in repo, minimal diffs, run tests after behaviour changes.
+Workspace rules enforced: no secrets in repo, minimal diffs, run tests after behaviour changes.
 
 ---
 
 ## Prompt Library (`ai-prompts/`)
-
-The prompt library acted as reusable context across sessions — similar to Cursor Skills:
 
 | File | Role |
 |------|------|
@@ -46,21 +40,19 @@ The prompt library acted as reusable context across sessions — similar to Curs
 | `test-design.md` | Manual + UI scenario design |
 | `test-design-API.md` | API scenario design |
 | `test-data.md` | Payloads, billing, password rules |
-| `automation-and-debugging.md` | Framework, Mocha migration, debug loops |
-| `documentation-and-summary.md` | README, submission polish |
+| `automation-and-debugging.md` | Framework setup, Mocha migration, debug loops |
 
 ---
 
-## Effective Practices (self-imposed)
+## Workflow Phases
 
-| Practice | Why |
-|----------|-----|
-| Manual CSV before automation | Catch UX quirks (double Confirm) early |
-| Validate AI assertions against live SUT | AI guessed wrong billing payload initially |
-| API-seed UI sessions for slow flows | Faster E2E checkout setup |
-| Headed runs for UI debugging | Watched proceed-button enable logic |
-| One chat per phase | Cleaner context + better prompt log |
-| Small git commits | Shows iteration to evaluators |
+1. **Understand** — Extract deliverables and AC1/AC2 from assessment brief; manual walkthrough of SUT
+2. **Design** — Manual CSV first; tag Smoke/Regression; map IDs for traceability
+3. **Automate** — POM + API clients + Mocha specs; validate every AI assertion locally
+4. **Debug** — Headed runs for UI; API probes for 422 errors; iterate prompts when AI was wrong
+5. **Document** — `project-info.md`, `cursor-tool.md`, execution reports; push iterative commits
+
+**Prompt iteration example:** First test-design prompt produced generic checkout steps; refined to explicitly require double Confirm after manual testing revealed missing invoice.
 
 ---
 
@@ -76,4 +68,4 @@ The prompt library acted as reusable context across sessions — similar to Curs
 
 ## One-paragraph summary (for assessors)
 
-> **Cursor** was used end-to-end for this assessment: requirement extraction, risk analysis, manual test design (`FunctionalTestcase.csv`), Playwright UI/API automation with Page Object Model (`Projectstructure/`), Mocha + Mochawesome reporting, exploratory notes, defect RCA, and submission documentation. Prompts were iterated when AI output was too generic or factually wrong (billing validation, password breach check). All AI-generated tests were run locally before commit. Reusable prompts are archived in `ai-prompts/`; workflow phases are documented in `tool-workflow.md`.
+> **Cursor** was used end-to-end: requirement extraction, risk analysis, manual test design (`FunctionalTestcase.csv`), Playwright UI/API automation with POM (`Playwright Framework + Report/`), Mocha + Mochawesome reporting, exploratory findings, defect RCA (in `project-info.md`), and submission documentation. Prompts were iterated when AI output was generic or wrong (billing validation, password breach). All tests were run locally before commit. Reusable prompts are in `ai-prompts/`.

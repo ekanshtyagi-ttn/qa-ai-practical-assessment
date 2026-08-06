@@ -216,6 +216,7 @@ Invoice payload must use sandbox billing: `billing_country: TG`, `billing_city: 
 | Summary | `Playwright Framework + Report/execution-reports/EXECUTION-SUMMARY.md` |
 | HTML report | `Playwright Framework + Report/execution-reports/mochawesome/index.html` |
 | JSON report | `Playwright Framework + Report/execution-reports/mochawesome/index.json` |
+| Screenshots | `Playwright Framework + Report/execution-reports/screenshots/` |
 
 **Latest run:** 12 passed, 0 failed (~2 min)
 
@@ -227,4 +228,5 @@ Invoice payload must use sandbox billing: `billing_country: TG`, `billing_city: 
 |----------|----------|
 | Functional test cases | `FunctionalTestcase.csv` |
 | AI prompt library | `ai-prompts/` |
-| Cursor / AI workflow | `cursor-tool.md` |
+| AI workflow (assessment deliverable) | `tool-workflow.md` |
+| Cursor / AI workflow (full detail) | `cursor-tool.md` |

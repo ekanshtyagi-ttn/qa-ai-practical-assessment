@@ -1,6 +1,6 @@
 # Execution Summary
 
-**Date:** 05-Aug-2026  
+**Date:** 06-Aug-2026  
 **Environment:** Windows 11, Node.js 24.x, Chromium (Playwright 1.54.2)  
 **Command:** `npm test` (from `Playwright Framework + Report/`)
 
@@ -38,11 +38,21 @@
 |----------|------|
 | Mochawesome HTML report | `execution-reports/mochawesome/index.html` |
 | Mochawesome JSON | `execution-reports/mochawesome/index.json` |
+| Screenshots | `execution-reports/screenshots/` |
+
+### Screenshots
+
+| File | Description |
+|------|-------------|
+| `01-home-catalog.png` | Toolshop product catalog (UI SUT) |
+| `02-product-detail.png` | Product detail page under test |
+| `03-login-page.png` | Login page (auth flow) |
+| `04-mochawesome-report.png` | Full Mochawesome HTML report (12/12 passed) |
 
 Open the HTML report locally:
 
 ```bash
-cd Projectstructure
+cd "Playwright Framework + Report"
 npm run report
 ```
 

@@ -3,6 +3,8 @@
 **Candidate:** Ekansh Tyagi  
 **Primary tool:** [Cursor](https://cursor.com/) (Composer / Auto + premium model for automation)
 
+> **Assessment note:** The submission brief requires `tool-workflow.md`. See **[tool-workflow.md](./tool-workflow.md)** for the deliverable index; this file contains the full workflow documentation.
+
 ---
 
 ## AI Tools Used
@@ -50,7 +52,7 @@ Workspace rules enforced: no secrets in repo, minimal diffs, run tests after beh
 2. **Design** — Manual CSV first; tag Smoke/Regression; map IDs for traceability
 3. **Automate** — POM + API clients + Mocha specs; validate every AI assertion locally
 4. **Debug** — Headed runs for UI; API probes for 422 errors; iterate prompts when AI was wrong
-5. **Document** — `project-info.md`, `cursor-tool.md`, execution reports; push iterative commits
+5. **Document** — `project-info.md`, `tool-workflow.md`, `cursor-tool.md`, execution reports + screenshots; push iterative commits
 
 **Prompt iteration example:** First test-design prompt produced generic checkout steps; refined to explicitly require double Confirm after manual testing revealed missing invoice.
 

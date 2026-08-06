@@ -139,6 +139,7 @@ Credentials are generated uniquely per run to avoid duplicate-email conflicts on
 | **Execution summary** | `execution-reports/EXECUTION-SUMMARY.md` | Markdown viewer |
 | **Mochawesome HTML** | `execution-reports/mochawesome/index.html` | `npm run report` |
 | **Mochawesome JSON** | `execution-reports/mochawesome/index.json` | Any JSON viewer |
+| **Screenshots** | `execution-reports/screenshots/` | Image viewer |
 
 **Latest run:** 12 passed, 0 failed (~2 min)
 
@@ -179,4 +180,11 @@ ai-prompts/
 └── automation-and-debugging.md
 ```
 
-See **[cursor-tool.md](./cursor-tool.md)** for Cursor rules, model selection, and workflow summary.
+## AI Workflow Documentation
+
+| File | Purpose |
+|------|---------|
+| **[tool-workflow.md](./tool-workflow.md)** | Assessment deliverable — AI workflow summary |
+| **[cursor-tool.md](./cursor-tool.md)** | Full Cursor rules, phases, model selection, assessor summary |
+
+The assessment brief asks for `tool-workflow.md`; this repo uses Cursor, so workflow details live in `cursor-tool.md` with a short index in `tool-workflow.md`.

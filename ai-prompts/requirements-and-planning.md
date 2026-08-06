@@ -16,7 +16,7 @@ acceptance criteria only. Don't write any automation yet.
 SUT is practicesoftwaretesting.com. Deliverables include project-info.md, manual CSV, automation, ai-prompts/, execution reports, public git with iterative commits. UI AC1 = register/login/profile; AC2 = browse/cart/COD/invoice. API AC1 = register/login/token/cart; AC2 = products/cart/invoice.
 
 **What I did next:**  
-Used this as a checklist while building the repo. Cross-checked against the PDF — AI missed mentioning `tool-workflow.md` initially, so I added it after re-reading the submission guidelines.
+Used this as a checklist while building the repo. Cross-checked against the PDF — AI missed mentioning `tool-workflow.md` initially, so I added it after re-reading the submission guidelines (see `tool-workflow.md` + `cursor-tool.md`).
 
 ---
 
@@ -70,4 +70,4 @@ reports. Keep dependencies minimal (dotenv only unless justified).
 Suggested POM under `pages/`, API wrappers under `api/`, shared `dataGenerator`, tag-based grep for npm scripts. Originally proposed Playwright fixtures — I later swapped to Mocha harness (see automation-and-debugging.md Entry 6).
 
 **Validation:**  
-Ended up as `Projectstructure/` — renamed from an earlier scaffold name for clarity.
+Ended up as `Playwright Framework + Report/` — renamed from earlier scaffold folders (`Projectstructure/`, `PrismStructure/`) for clarity.

@@ -1,0 +1,8 @@
+.tools/
+node_modules/
+.env
+Projectstructure/node_modules/
+Projectstructure/mochawesome-report/
+*.log
+.DS_Store
+Thumbs.db

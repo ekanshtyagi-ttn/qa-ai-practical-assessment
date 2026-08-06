@@ -1,0 +1,25 @@
+{
+  "name": "toolshop-playwright-mocha",
+  "version": "1.0.0",
+  "description": "Playwright + Mocha + Mochawesome framework for Practice Software Testing (Toolshop) UI + API assessment",
+  "private": true,
+  "scripts": {
+    "test": "mocha \"tests/**/*.spec.js\" --config .mocharc.cjs --reporter-option reportDir=execution-reports/mochawesome,reportFilename=index",
+    "test:smoke": "mocha \"tests/**/*.spec.js\" --config .mocharc.cjs --grep @Smoke --reporter-option reportDir=execution-reports/mochawesome,reportFilename=index",
+    "test:regression": "mocha \"tests/**/*.spec.js\" --config .mocharc.cjs --grep @Regression --reporter-option reportDir=execution-reports/mochawesome,reportFilename=index",
+    "test:ui": "mocha \"tests/ui/**/*.spec.js\" --config .mocharc.cjs --reporter-option reportDir=execution-reports/mochawesome,reportFilename=index",
+    "test:api": "mocha \"tests/api/**/*.spec.js\" --config .mocharc.cjs --reporter-option reportDir=execution-reports/mochawesome,reportFilename=index",
+    "test:ui:smoke": "mocha \"tests/ui/**/*.spec.js\" --config .mocharc.cjs --grep @Smoke --reporter-option reportDir=execution-reports/mochawesome,reportFilename=index",
+    "test:api:smoke": "mocha \"tests/api/**/*.spec.js\" --config .mocharc.cjs --grep @Smoke --reporter-option reportDir=execution-reports/mochawesome,reportFilename=index",
+    "test:headed": "cross-env HEADED=1 mocha \"tests/**/*.spec.js\" --config .mocharc.cjs --reporter-option reportDir=execution-reports/mochawesome,reportFilename=index",
+    "report": "start execution-reports/mochawesome/index.html"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.54.2",
+    "cross-env": "7.0.3",
+    "dotenv": "16.6.1",
+    "mocha": "11.7.1",
+    "mochawesome": "7.1.3",
+    "playwright": "1.54.2"
+  }
+}
